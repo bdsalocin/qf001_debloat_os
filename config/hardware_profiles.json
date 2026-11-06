@@ -1,0 +1,12 @@
+{
+  "platform": "ROCO_K706",
+  "reference": "QF001",
+  "cpu_options": [
+    "UIS7862A_1.8GHz",
+    "UIS7862S_2.0GHz"
+  ],
+  "amplifier_ic": "TDA7851",
+  "radio_ic": "TDA7708",
+  "dsp_ic": "BU32107EFV",
+  "mcu_preserved": true
+}

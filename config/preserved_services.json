@@ -1,0 +1,11 @@
+{
+  "description": "Services indispensables au vehicule a preserver imperativement",
+  "preserved_packages": [
+    "com.android.server.telecom",
+    "com.syu.canbus",
+    "com.roco.canbus",
+    "com.ts.main.radio",
+    "com.syu.bt",
+    "com.ts.camera"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "description": "Paquets superflus, telemetries et applications d arriere plan a neutraliser",
+  "packages": [
+    "com.google.android.apps.tachyon",
+    "com.android.carrierdefaultapp",
+    "com.autonavi.amapauto",
+    "com.baidu.BaiduMap",
+    "com.fyt.feedback",
+    "com.ts.car.updater",
+    "com.chinese.telemetry"
+  ]
+}
