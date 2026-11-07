@@ -1,11 +1,71 @@
 {
-  "description": "Services indispensables au vehicule a preserver imperativement",
+  "description": "Services indispensables au vehicule a preserver imperativement sur plateforme ROCO K706 / QF001 (UIS7862)",
+  "version": "2.0.0",
   "preserved_packages": [
     "com.android.server.telecom",
     "com.syu.canbus",
     "com.roco.canbus",
     "com.ts.main.radio",
     "com.syu.bt",
-    "com.ts.camera"
-  ]
+    "com.ts.camera",
+    "com.ts.car"
+  ],
+  "categories": {
+    "radio_tuner": {
+      "rationale": "Controle direct du tuner analogique STMicroelectronics TDA7708 via bus I2C et MCU",
+      "packages": [
+        "com.ts.main.radio"
+      ],
+      "hardware_ic": "TDA7708"
+    },
+    "canbus_controller": {
+      "rationale": "Decodage du bus CAN automobile, commandes au volant, capteurs de recul et climatisation",
+      "packages": [
+        "com.roco.canbus",
+        "com.syu.canbus"
+      ],
+      "hardware_bus": "UART / CAN Box"
+    },
+    "bluetooth_handsfree": {
+      "rationale": "Gestion de la telephonie main-libre et du streaming audio haute fidelite A2DP",
+      "packages": [
+        "com.syu.bt"
+      ],
+      "hardware_module": "UIS7862 BT HAL"
+    },
+    "reverse_camera": {
+      "rationale": "Affichage video instantane de la camera de recul AHD / CVBS lors de l engagement de la marche arriere",
+      "packages": [
+        "com.ts.camera"
+      ],
+      "hardware_interface": "Video Decoder / ISP"
+    },
+    "automotive_core_hal": {
+      "rationale": "Couche d abstraction materielle du processeur sonore ROHM BU32107EFV, amplificateur TDA7851 et reglages vehicule",
+      "packages": [
+        "com.ts.car"
+      ],
+      "hardware_ic": [
+        "BU32107EFV",
+        "TDA7851"
+      ]
+    },
+    "telephony_subsystem": {
+      "rationale": "Routage audio des appels vers les haut-parleurs du vehicule",
+      "packages": [
+        "com.android.server.telecom"
+      ]
+    }
+  },
+  "hardware_bindings": {
+    "TDA7708": "com.ts.main.radio",
+    "TDA7851": "com.ts.car",
+    "BU32107EFV": "com.ts.car",
+    "MCU_CANBUS": [
+      "com.roco.canbus",
+      "com.syu.canbus"
+    ],
+    "CAMERA_REVERSE": "com.ts.camera",
+    "BT_HFP_A2DP": "com.syu.bt"
+  }
 }
