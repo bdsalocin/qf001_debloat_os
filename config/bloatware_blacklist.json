@@ -1,12 +1,118 @@
 {
-  "description": "Paquets superflus, telemetries et applications d arriere plan a neutraliser",
+  "description": "Blacklist exhaustive des bloatwares, traceurs, daemons d'arriere-plan et services inutiles a neutraliser sur ROCO K706 / QF001 (UIS7862)",
+  "version": "2.0.0",
   "packages": [
     "com.google.android.apps.tachyon",
     "com.android.carrierdefaultapp",
     "com.autonavi.amapauto",
+    "com.autonavi.minimap",
     "com.baidu.BaiduMap",
+    "com.tencent.map",
     "com.fyt.feedback",
+    "com.fyt.colleague",
     "com.ts.car.updater",
-    "com.chinese.telemetry"
-  ]
+    "com.syu.updater",
+    "com.chinese.telemetry",
+    "com.adups.fota",
+    "com.adups.fota.sysoper",
+    "com.unisoc.ylog",
+    "com.sprd.ylog",
+    "com.txznet.adapter",
+    "com.txznet.music",
+    "com.txznet.record",
+    "com.txznet.smartadapter",
+    "com.txznet.websearch",
+    "com.txznet.weather",
+    "com.txznet.call",
+    "com.txznet.carinfo",
+    "com.txznet.speech",
+    "com.txznet.smart"
+  ],
+  "patterns": [
+    "com.txznet.*"
+  ],
+  "system_binaries": [
+    "/system/bin/ylog",
+    "/system/bin/ylog_cli",
+    "/system/xbin/ylog",
+    "/vendor/bin/ylog"
+  ],
+  "init_services": [
+    "/system/etc/init/ylog.rc",
+    "/vendor/etc/init/ylog.rc"
+  ],
+  "spool_directories": [
+    "/data/ylog",
+    "/sdcard/ylog",
+    "/data/local/tmp/ylog"
+  ],
+  "categories": {
+    "emmc_wearout_and_logging": {
+      "rationale": "Neutralisation des ecritures circulaires massives sur memoire flash eMMC pour eviter l usure prematuree et les saccades audio",
+      "packages": [
+        "com.unisoc.ylog",
+        "com.sprd.ylog"
+      ],
+      "binaries": [
+        "/system/bin/ylog",
+        "/system/bin/ylog_cli",
+        "/vendor/bin/ylog"
+      ],
+      "init_scripts": [
+        "/system/etc/init/ylog.rc",
+        "/vendor/etc/init/ylog.rc"
+      ]
+    },
+    "chinese_analytics_and_telemetry": {
+      "rationale": "Suppression des traceurs, exfiltrations de coordonnees GPS et agents de telechargement furtif",
+      "packages": [
+        "com.chinese.telemetry",
+        "com.fyt.feedback",
+        "com.fyt.colleague",
+        "com.adups.fota",
+        "com.adups.fota.sysoper",
+        "com.ts.car.updater",
+        "com.syu.updater"
+      ]
+    },
+    "third_party_asian_maps": {
+      "rationale": "Liberation de plus de 380 Mo d espace systeme et elimination des services de geolocalisation arriere plan inoperants en Europe",
+      "packages": [
+        "com.baidu.BaiduMap",
+        "com.autonavi.amapauto",
+        "com.autonavi.minimap",
+        "com.tencent.map"
+      ]
+    },
+    "non_automotive_video_calling": {
+      "rationale": "Elimination des services d appel video inadaptes et distrayants au volant sans camera frontale habitacle",
+      "packages": [
+        "com.google.android.apps.tachyon"
+      ]
+    },
+    "unwanted_chinese_voice_assistants": {
+      "rationale": "Suppression de la suite d assistant vocal chinois TXZ pour liberer le micro habitacle et eviter les conflits audio focus",
+      "packages": [
+        "com.txznet.adapter",
+        "com.txznet.music",
+        "com.txznet.record",
+        "com.txznet.smartadapter",
+        "com.txznet.websearch",
+        "com.txznet.weather",
+        "com.txznet.call",
+        "com.txznet.carinfo",
+        "com.txznet.speech",
+        "com.txznet.smart"
+      ],
+      "patterns": [
+        "com.txznet.*"
+      ]
+    },
+    "unneeded_carrier_services": {
+      "rationale": "Suppression des services de provisionnement cellulaire superflus sur tablette de bord",
+      "packages": [
+        "com.android.carrierdefaultapp"
+      ]
+    }
+  }
 }
