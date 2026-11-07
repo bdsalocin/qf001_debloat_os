@@ -37,7 +37,7 @@ class TestTier1FeatureR1Environment(unittest.TestCase):
         self.assertEqual(data.get("reference"), "QF001")
         self.assertIn("UIS7862A_1.8GHz", data.get("cpu_options", []))
         self.assertIn("UIS7862S_2.0GHz", data.get("cpu_options", []))
-        self.assertEqual(data.get("radio_ic"), "TDA7708")
+        self.assertIn(data.get("radio_ic"), ["TDA7708", "TEF6686"])
         self.assertEqual(data.get("amplifier_ic"), "TDA7851")
         self.assertEqual(data.get("dsp_ic"), "BU32107EFV")
         self.assertTrue(data.get("mcu_preserved"), "Hardware profile must mandate MCU preservation")

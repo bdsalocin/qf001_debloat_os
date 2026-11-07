@@ -330,12 +330,18 @@ class SafetyValidator:
 
         # Check radio tuner definition (mandatory for QF001 automotive hardware)
         expected_tuner = self.hardware_profile.get("radio_ic", self.EXPECTED_RADIO_IC)
+        allowed_tuners = self.hardware_profile.get("radio_options", [expected_tuner])
+        if isinstance(allowed_tuners, str):
+            allowed_tuners = [allowed_tuners]
+        if expected_tuner and expected_tuner not in allowed_tuners:
+            allowed_tuners.append(expected_tuner)
+
         tuner_prop = properties.get("ro.qf001.radio.tuner")
         if not tuner_prop:
             violations.append("build.prop missing required property 'ro.qf001.radio.tuner'")
-        elif expected_tuner not in tuner_prop:
+        elif not any(cand in tuner_prop for cand in allowed_tuners):
             violations.append(
-                f"Radio tuner mismatch in build.prop: expected '{expected_tuner}', found '{tuner_prop}'"
+                f"Radio tuner mismatch in build.prop: expected one of {allowed_tuners}, found '{tuner_prop}'"
             )
 
         # Check DSP definition (mandatory for QF001 automotive hardware)

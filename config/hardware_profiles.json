@@ -6,7 +6,16 @@
     "UIS7862S_2.0GHz"
   ],
   "amplifier_ic": "TDA7851",
-  "radio_ic": "TDA7708",
+  "radio_ic": "TEF6686",
   "dsp_ic": "BU32107EFV",
-  "mcu_preserved": true
+  "mcu_preserved": true,
+  "screen_resolution": "1024x600",
+  "radio_options": [
+    "TEF6686",
+    "TDA7708",
+    "TSC4745"
+  ],
+  "mcu_family": "QF05",
+  "mcu_version": "QF05.V02.08.20240713.004121",
+  "ram": "6GB"
 }
